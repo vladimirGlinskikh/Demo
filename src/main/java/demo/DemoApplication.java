@@ -8,7 +8,13 @@ import org.springframework.context.ApplicationContext;
 public class DemoApplication {
     public static void main(String[] args) {
         ApplicationContext context = SpringApplication.run(DemoApplication.class, args);
-        HelloSpring helloSpring = (HelloSpring) context.getBean("helloSpring");
-        helloSpring.sayHello();
+        InjectedByConstructorService constructorService =
+                (InjectedByConstructorService) context.getBean("injectedByConstructorService");
+        constructorService.getMessage();
+
+        System.out.println("----------------------");
+        SetterBasedService setterBasedService =
+                (SetterBasedService) context.getBean("setterBasedService");
+        setterBasedService.getMessage();
     }
 }
