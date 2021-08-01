@@ -8,7 +8,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ImportResource;
 
 @SpringBootApplication
-//@ComponentScan("demo.kz.zhelezyaka")
 @ImportResource("classpath:/spring/spring-config.xml")
 public class DemoApplication {
     public static void main(String[] args) {
