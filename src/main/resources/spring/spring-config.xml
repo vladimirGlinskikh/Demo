@@ -5,6 +5,9 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
     <context:component-scan base-package="demo.kz.zhelezyaka"/>
+
+    <import resource="classpath:spring/hello-spring.xml"/>
+
     <bean id="greetingController" class="demo.kz.zhelezyaka.controllers.GreetingController">
         <property name="helloSpringService" ref="helloSpringServiceEstonian"/>
         <property name="helloSpringServiceRussian" ref="helloSpringServiceRussian"/>
@@ -12,25 +15,4 @@
         <property name="helloSpringServiceKazakhstan" ref="helloSpringServiceKazakhstan"/>
         <property name="helloSpringServiceEnglish" ref="helloSpringServiceEnglish"/>
     </bean>
-    <bean id="helloSpringFactory" class="demo.kz.zhelezyaka.services.HelloSpringFactory"/>
-    <bean id="helloSpringServiceEstonian" factory-bean="helloSpringFactory" factory-method="createHelloSpringService"
-          primary="false">
-        <constructor-arg value="ee"/>
-    </bean>
-    <bean id="helloSpringServiceRussian" factory-bean="helloSpringFactory" factory-method="createHelloSpringService"
-          primary="false">
-        <constructor-arg value="ru"/>
-    </bean>
-<!--    <beans profile="english">-->
-        <bean id="helloSpringServiceEnglish" factory-bean="helloSpringFactory" factory-method="createHelloSpringService"
-              primary="false">
-            <constructor-arg value="en"/>
-        </bean>
-<!--    </beans>-->
-<!--    <beans profile="kazakhstan">-->
-        <bean id="helloSpringServiceKazakhstan" factory-bean="helloSpringFactory"
-              factory-method="createHelloSpringService" primary="false">
-            <constructor-arg value="kz"/>
-        </bean>
-<!--    </beans>-->
 </beans>
