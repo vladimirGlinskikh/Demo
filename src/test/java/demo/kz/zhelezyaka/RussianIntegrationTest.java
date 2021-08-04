@@ -1,4 +1,4 @@
-package kz.zhelezyaka;
+package demo.kz.zhelezyaka;
 
 import demo.kz.zhelezyaka.services.HelloSpringServiceRussianImpl;
 import org.junit.Test;
