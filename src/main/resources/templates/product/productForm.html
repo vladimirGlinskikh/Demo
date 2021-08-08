@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Spring Core Tutorial - Product form</title>
+    <title>Spring Core Online Tutorial - Product Form</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
     <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css"
           th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}"
           rel="stylesheet" media="screen"/>
@@ -15,6 +16,7 @@
 </head>
 <body>
 <div class="container">
+
     <h2>Product Details</h2>
     <div>
         <form class="form-horizontal" th:object="${product}" th:action="@{/product}" method="post">
@@ -43,5 +45,6 @@
         </form>
     </div>
 </div>
+
 </body>
 </html>
