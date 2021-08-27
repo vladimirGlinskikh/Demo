@@ -1,9 +1,11 @@
-package springMVC.services;
+package springMVC.services.mapservices;
 
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import springMVC.domain.Customer;
 import springMVC.domain.DomainObject;
+import springMVC.services.CustomerService;
+import springMVC.services.mapservices.AbstractMapService;
 
 import java.util.List;
 

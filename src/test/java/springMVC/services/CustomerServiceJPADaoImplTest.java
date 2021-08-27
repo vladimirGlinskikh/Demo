@@ -8,6 +8,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import springMVC.config.JpaIntegrationConfig;
 import springMVC.domain.Customer;
+import springMVC.domain.User;
 
 import java.util.List;
 
@@ -26,5 +27,17 @@ public class CustomerServiceJPADaoImplTest {
     public void testListMethod() {
         List<Customer> customers = (List<Customer>) customerService.listAll();
         assert customers.size() == 5;
+    }
+
+    @Test
+    public void testSaveWithUser() {
+        Customer customer = new Customer();
+        User user = new User();
+        user.setUsername("This is my user name");
+        user.setPassword("MyAwesomePassword");
+        customer.setUser(user);
+        Customer savedCustomer = customerService.saveOrUpdate(customer);
+
+        assert savedCustomer.getUser().getId() != null;
     }
 }

@@ -1,12 +1,12 @@
-package springMVC.services;
+package springMVC.services.mapservices;
 
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import springMVC.domain.DomainObject;
 import springMVC.domain.Product;
+import springMVC.services.ProductService;
+import springMVC.services.mapservices.AbstractMapService;
 
-import java.math.BigDecimal;
-import java.util.HashMap;
 import java.util.List;
 
 @Service

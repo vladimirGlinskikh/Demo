@@ -1,4 +1,4 @@
-package springMVC.services;
+package springMVC.services.mapservices;
 
 import springMVC.domain.DomainObject;
 
@@ -36,8 +36,6 @@ public abstract class AbstractMapService {
     }
 
     private Integer getNextkey() {
-        if (domainMap.size() == 0)
-            return 1;
         return Collections.max(domainMap.keySet()) + 1;
     }
 }
