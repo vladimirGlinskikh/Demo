@@ -7,24 +7,24 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import springMVC.config.JpaIntegrationConfig;
-import springMVC.domain.Product;
+import springMVC.domain.Customer;
 
 import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(JpaIntegrationConfig.class)
 @ActiveProfiles("jpadao")
-public class ProductServiceJpaDaoImplTest {
-    private ProductService productService;
+public class CustomerServiceJPADaoImplTest {
+    private CustomerService customerService;
 
     @Autowired
-    public void setProductService(ProductService productService) {
-        this.productService = productService;
+    public void setCustomerService(CustomerService customerService) {
+        this.customerService = customerService;
     }
 
     @Test
     public void testListMethod() {
-        List<Product> products = (List<Product>) productService.listAll();
-        assert products.size() == 5;
+        List<Customer> customers = (List<Customer>) customerService.listAll();
+        assert customers.size() == 5;
     }
 }

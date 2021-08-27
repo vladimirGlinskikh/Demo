@@ -1,8 +1,8 @@
 package springMVC.controllers;
 
+import org.junit.Before;
+import org.junit.Test;
 import org.mockito.*;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -16,14 +16,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.hamcrest.Matchers.*;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-class ProductControllerTest {
+public class ProductControllerTest {
     @Mock
     private ProductService productService;
 
@@ -32,14 +31,14 @@ class ProductControllerTest {
 
     private MockMvc mockMvc;
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         MockitoAnnotations.initMocks(this);
         mockMvc = MockMvcBuilders.standaloneSetup(productController).build();
     }
 
     @Test
-    void testList() throws Exception {
+    public void testList() throws Exception {
         List<Product> products = new ArrayList<>();
         products.add(new Product());
         products.add(new Product());
@@ -53,7 +52,7 @@ class ProductControllerTest {
     }
 
     @Test
-    void testShow() throws Exception {
+    public void testShow() throws Exception {
         Integer id = 1;
 
         when(productService.getById(id)).thenReturn(new Product());
@@ -65,7 +64,7 @@ class ProductControllerTest {
     }
 
     @Test
-    void testEdit() throws Exception {
+    public void testEdit() throws Exception {
         Integer id = 1;
 
         when(productService.getById(id)).thenReturn(new Product());

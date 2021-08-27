@@ -1,9 +1,11 @@
 package springMVC.controllers;
 
+import org.junit.Before;
+import org.junit.*;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import springMVC.domain.Customer;
 import springMVC.services.CustomerService;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.*;
 import org.mockito.MockitoAnnotations;
@@ -15,14 +17,14 @@ import java.util.List;
 
 import static org.hamcrest.Matchers.*;
 import static org.hamcrest.beans.HasPropertyWithValue.hasProperty;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-import static org.junit.jupiter.api.Assertions.*;
 
-class CustomerControllerTest {
+public class CustomerControllerTest {
     @Mock
     private CustomerService customerService;
 
@@ -31,8 +33,8 @@ class CustomerControllerTest {
 
     private MockMvc mockMvc;
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         MockitoAnnotations.initMocks(this);
         mockMvc = MockMvcBuilders.standaloneSetup(customerController).build();
     }
