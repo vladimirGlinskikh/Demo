@@ -23,6 +23,17 @@ public class User implements DomainObject {
     @OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private Customer customer;
 
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    private Cart cart;
+
+    public Cart getCart() {
+        return cart;
+    }
+
+    public void setCart(Cart cart) {
+        this.cart = cart;
+    }
+
     public Customer getCustomer() {
         return customer;
     }
