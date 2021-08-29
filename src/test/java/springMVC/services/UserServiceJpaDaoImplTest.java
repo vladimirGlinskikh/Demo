@@ -7,6 +7,7 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import springMVC.config.JpaIntegrationConfig;
+import springMVC.domain.Customer;
 import springMVC.domain.User;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -34,5 +35,25 @@ public class UserServiceJpaDaoImplTest {
 
         System.out.println("Encrypted Password");
         System.out.println(savedUser.getEncryptedPassword());
+    }
+
+    @Test
+    public void testSaveOfUserWithCustomer() {
+        User user = new User();
+
+        user.setUsername("someUserName");
+        user.setPassword("userPassword");
+
+        Customer customer = new Customer();
+        customer.setFirstName("Vladimir");
+        customer.setLastName("Glinskikh");
+
+        user.setCustomer(customer);
+        User savedUser = userService.saveOrUpdate(user);
+
+        assert savedUser.getId() != null;
+        assert savedUser.getVersion() != null;
+        assert savedUser.getCustomer() != null;
+        assert savedUser.getCustomer().getId() != null;
     }
 }
