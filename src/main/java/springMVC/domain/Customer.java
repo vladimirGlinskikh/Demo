@@ -3,14 +3,7 @@ package springMVC.domain;
 import javax.persistence.*;
 
 @Entity
-public class Customer implements DomainObject {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
-
-    @Version
-    private Integer version;
+public class Customer extends AbstractDomainClass {
 
     private String firstName;
     private String lastName;
@@ -23,15 +16,12 @@ public class Customer implements DomainObject {
     @Embedded
     private Address shippingAddress;
 
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private User user;
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
+    @Override
+    public Integer getId() {
+        return id;
     }
 
     public String getFirstName() {
@@ -66,22 +56,12 @@ public class Customer implements DomainObject {
         this.phoneNumber = phoneNumber;
     }
 
-    @Override
-    public Integer getId() {
-        return id;
+    public User getUser() {
+        return user;
     }
 
-    @Override
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getVersion() {
-        return version;
-    }
-
-    public void setVersion(Integer version) {
-        this.version = version;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Address getBillingAddress() {
